@@ -43,6 +43,7 @@ main {
 
 .add-ingredient-form {
   display: flex;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 2em;
 }
@@ -52,7 +53,7 @@ main {
   font-size: 1em;
   border-radius: 6px;
   font-weight: 500;
-  width: 400px;
+  width: 100%;
   color: #333;
   border: 1px solid #D1D5DB;
   transition: border-color 0.25s;
@@ -122,16 +123,18 @@ ul.ingredients-list > li {
 }
 
 .get-recipe-container button {
+  white-space: nowrap;
+  width: auto;
   padding: 9px 17px;
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
-  background-color: hwb(15 34% 18%);
+  background-color: #d17557;
   color: #fff;
   border: 1px solid transparent;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 2px 0 rgba(209, 117, 87, 0.7);
+  box-shadow: 0 4px 2px  rgba(209, 117, 87, 0.7);
   transition: background-color 0.25s;
 }
 
@@ -181,52 +184,41 @@ ul.ingredients-list > li {
 
 
 /* loader */
-
-.loader-container {
-  position: fixed; /* Sit on top of the page content */
-  width: 100%; /*Full width (cover the whole page) */
-  height: 100%; /*Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.8); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
-  z-index: 9999;
-}
-
-/* loader */
-.loader {
+.container-loader {
   position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+
+}
+.loader {
+  position: relative;
   top: 50%;
   left: 50%;
-  --d:22px;
-  width: 4px;
-  height: 4px;
+  border: 10px solid #6B7280;
+  border-top: 10px solid rgb(204, 94, 58);
   border-radius: 50%;
-  color: #766DF4;
-  box-shadow: 
-    calc(1*var(--d))      calc(0*var(--d))     0 0,
-    calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1px,
-    calc(0*var(--d))      calc(1*var(--d))     0 2px,
-    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
-    calc(-1*var(--d))     calc(0*var(--d))     0 4px,
-    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
-    calc(0*var(--d))      calc(-1*var(--d))    0 6px;
-  animation: s7 1s infinite steps(8);
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
 }
 
-@keyframes s7 {
-  100% {transform: rotate(1turn)}
-}
-
-
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 
 @media  (max-width: 767px) {
   main {
     width: 100%;
     margin: 0;
+    padding: 1.3rem;
   }
   
   h1 {
@@ -241,7 +233,7 @@ ul.ingredients-list > li {
   } 
 
   .add-ingredient-form > .add-ingredients {
-    padding: 9px 14px;
+    padding: 9px 10px;
     font-size: 10px; 
   }
 
@@ -255,8 +247,6 @@ ul.ingredients-list > li {
   .get-recipe-container button {
     padding: 9px 14px;
     font-size: 12px;
-    white-space: nowrap;
-    width: auto;
   }
   .suggested-recipe-title {
     font-size: 1.3em;
@@ -266,7 +256,8 @@ ul.ingredients-list > li {
 
 @media  (min-width: 768px) and (max-width: 1024px) {
   main {
-    width: 70%;
+    width: 80%;
+
   }
   
 }
